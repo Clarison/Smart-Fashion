@@ -18,7 +18,7 @@ features = np.array(features)
 def app():
     st.title("Smart Fashion Search Engine")
     st.write("Enter query image and find similar fashion images!")
-    #st.write(features)
+    st.write(features)
     
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg","jpeg","png"])
     
