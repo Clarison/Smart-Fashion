@@ -21,7 +21,7 @@ class FeatureExtractor:
             feature (np.ndarray): deep feature with the shape=(4096, )
         """
         # Convert bytes to PIL Image
-        img = Image.open(img)
+        
         img = img.resize((224, 224))  # VGG must take a 224x224 img as an input
         img = img.convert('RGB')  # Make sure img is color
         x = image.img_to_array(img)  # To np.array. Height x Width x Channel. dtype=float32
