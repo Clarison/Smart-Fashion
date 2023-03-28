@@ -1,11 +1,11 @@
 from PIL import Image
 
 # Load the image
-image = Image.open('my_image.jpg')
+uploaded_file = st.file_uploader("Choose an image...", type=["jpg","jpeg","png"])
 
 # Resize the image
 new_size = (500, 500)
-image = image.resize(new_size)
+uploaded_file = uploaded_file.resize(new_size)
 
 # Display the image
-st.image(image, caption='My Image')
+st.image(uploaded_file, caption='My Image')
