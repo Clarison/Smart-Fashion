@@ -6,11 +6,7 @@ import streamlit as st
 from pathlib import Path
 
 
-for img_path in sorted(Path("./static/img").glob("*.jpg")):
-        print(img_path)  # e.g., ./static/img/xxx.jpg
-        feature = fe.extract(img=Image.open(img_path))
-        feature_path = Path("./static/feature") / (img_path.stem + ".npy")  # e.g., ./static/feature/xxx.npy
-        np.save(feature_path, feature)
+
         
 # Read image features
 fe = FeatureExtractor()
@@ -21,6 +17,11 @@ for feature_path in Path("./static/feature").glob("*.npy"):
     img_paths.append(Path("./static/img") / (feature_path.stem + ".jpg"))
 features = np.array(features)
 
+for img_path in sorted(Path("./static/img").glob("*.jpg")):
+        print(img_path)  # e.g., ./static/img/xxx.jpg
+        feature = fe.extract(img=Image.open(img_path))
+        feature_path = Path("./static/feature") / (img_path.stem + ".npy")  # e.g., ./static/feature/xxx.npy
+        np.save(feature_path, feature)
 
 def app():
     st.title("Smart Fashion Search Engine")
