@@ -24,7 +24,7 @@ for img_path in sorted(Path("./static/img").glob("*.jpg")):
         np.save(feature_path, feature)
         
 
-features = []
+features = [] 
 img_paths = []
 for feature_path in Path("./static/feature").glob("*.npy"):
     features.append(np.load(feature_path))
