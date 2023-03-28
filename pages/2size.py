@@ -1,24 +1,25 @@
 import streamlit as st
 from PIL import Image
 
-# Set up Streamlit app
-st.set_page_config(page_title="Image Resizer", layout="wide")
 st.title("Image Resizer")
 
 # Upload image
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
 
-# If image is uploaded
 if uploaded_file is not None:
-    # Open uploaded image with Pillow
-    img = Image.open(uploaded_file)
+    # Open uploaded image with PIL
+    image = Image.open(uploaded_file)
 
-    # Display original image
-    st.subheader("Original Image")
-    st.image(img, use_column_width=True)
+    # Resize image to three different sizes
+    small_image = image.resize((100, 100))
+    medium_image = image.resize((300, 300))
+    large_image = image.resize((500, 500))
 
-    # Display image in different sizes
-    st.subheader("Resized Images")
-    for size in [100, 200, 500]:
-        resized_img = img.resize((size, size))
-        st.image(resized_img, caption=f"{size} x {size}", use_column_width=True)
+    # Display resized images in columns
+    col1, col2, col3 = st.beta_columns(3)
+    with col1:
+        st.image(small_image, caption="Small (100x100)")
+    with col2:
+        st.image(medium_image, caption="Medium (300x300)")
+    with col3:
+        st.image(large_image, caption="Large (500x500)")
