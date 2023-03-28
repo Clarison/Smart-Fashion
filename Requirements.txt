@@ -1,4 +1,2 @@
 streamlit
-Pillow
-
-tensorflow
+tensorflow 
