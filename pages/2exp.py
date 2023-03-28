@@ -1,8 +1,9 @@
-import streamlit as st
 import numpy as np
-from pathlib import Path
 from PIL import Image
 from feature_extractor import FeatureExtractor
+from datetime import datetime
+import streamlit as st
+from pathlib import Path
 
 # Read image features
 fe = FeatureExtractor()
@@ -13,32 +14,29 @@ for feature_path in Path("./static/feature").glob("*.npy"):
     img_paths.append(Path("./static/img") / (feature_path.stem + ".jpg"))
 features = np.array(features)
 
-# Define the Streamlit app
 def app():
-    # Set the app title and description
-    st.set_page_config(page_title="Hello", page_icon="👋")
-    st.write("# Welcome to Streamlit by Group 6! 👋")
-    st.write("This app allows you to search for similar images from a collection of pictures.")
-
-    # Create a file uploader with a label and type of image
-    uploaded_file = st.file_uploader("Choose an image...", type="jpg")
-
-    # Check if an image was uploaded
+    st.title("Smart Fashion Search Engine")
+    st.write("Enter query image and find similar fashion images!")
+    
+    uploaded_file = st.file_uploader("Choose an image...", type=["jpg","jpeg","png"])
+    
     if uploaded_file is not None:
-        # Display the image
-        st.image(uploaded_file)
+        # Save query image
+        img = Image.open(uploaded_file)  # PIL image
+        uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + uploaded_file.name
+        img.save(uploaded_img_path)
 
         # Run search
-        query = fe.extract(uploaded_file)
+        query = fe.extract(img)
         dists = np.linalg.norm(features-query, axis=1)  # L2 distances to features
         ids = np.argsort(dists)[:30]  # Top 30 results
         scores = [(dists[id], img_paths[id]) for id in ids]
 
-        # Display the search results
-        st.write("Top 30 similar images:")
+        # Display results
+        st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
         for score in scores:
-            st.image(score[1], caption=f"Distance: {score[0]}")
+            image = Image.open(score[1])
+            st.image(np.array(image.resize((256,256))), caption=f"Distance: {score[0]}", use_column_width=True)
 
-# Run the Streamlit app
 if __name__ == "__main__":
     app()
