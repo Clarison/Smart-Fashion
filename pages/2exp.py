@@ -38,7 +38,7 @@ def app():
         st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
         st.write("Here are some similar fashion type , please give a check:")
         for score in scores:
-            image = Image.open(score[2])
+            image = Image.open(score[1])
             st.image(np.array(image.resize((256,256))), caption=f"Distance: {score[0]}", use_column_width=True)
 
 if __name__ == "__main__":
