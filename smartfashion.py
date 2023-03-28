@@ -24,3 +24,5 @@ st.set_page_config(
 
 st.write("# Welcome to Streamlit by Group 6! 👋")
 
+st.write(features)
+
