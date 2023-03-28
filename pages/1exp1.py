@@ -31,7 +31,7 @@ for feature_path in Path("./static/feature").glob("*.npy"):
     st.write('prnt6')
 features = np.array(features)
 
-st.write('prnt7') 
+st.write('prnt7')
 st.set_page_config(
     page_title="Hello",
     page_icon="👋",
