@@ -1,9 +1,11 @@
 import streamlit as st
 from PIL import Image
-from feature_extractor import FeatureExtractor
+
 from datetime import datetime
 from flask import Flask, request, render_template
 from pathlib import Path
+from feature_extractor import FeatureExtractor
+
 
 # Read image features
 fe = FeatureExtractor()
