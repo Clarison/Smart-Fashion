@@ -43,7 +43,7 @@ def app():
         scores = [(dists[id], img_paths[id]) for id in ids]
 
         # Display results
-        st.image(uploaded_file, caption='Uploaded Image', use_column_width=True)
+        st.image(uploaded_file, caption='Uploaded Image')
         st.write("Here are some similar fashion type , please give a check:")
         for score in scores:
             image = Image.open(score[1])
