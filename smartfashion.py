@@ -32,6 +32,14 @@ for feature_path in Path("./static/feature").glob("*.npy"):
 features = np.array(features)
 
 
+# Create a file uploader with a label and type of image
+uploaded_file = st.file_uploader("Choose an image...", type="jpg")
+
+# Check if an image was uploaded
+if uploaded_file is not None:
+    # Display the image
+    st.image(uploaded_file)
+
 
 
 
