@@ -6,7 +6,7 @@ from flask import Flask, request, render_template
 from pathlib import Path
 from feature_extractor import FeatureExtractor
 
- st.set_page_config(
+st.set_page_config(
     page_title="Hello",
     page_icon="👋",
 )       
