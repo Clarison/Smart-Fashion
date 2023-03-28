@@ -40,7 +40,14 @@ if uploaded_file is not None:
     # Display the image
     st.image(uploaded_file)
 
+    
+   # Run search
+        query = fe.extract(uploaded_file)
+        dists = np.linalg.norm(features-query, axis=1)  # L2 distances to features
+        ids = np.argsort(dists)[:30]  # Top 30 results
+        scores = [(dists[id], img_paths[id]) for id in ids]
 
 
-
+st.write(scores)
+        
 st.write(features)
