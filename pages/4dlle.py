@@ -10,11 +10,11 @@ async def generate_images(prompt):
     images = await dalle.generate(prompt)
     return images
 
-def app():
-    st.title("DALLE Image Generation App")
+
+st.title("DALLE Image Generation App")
 
     # Get text prompt from user
-    prompt = st.text_input("Enter a text prompt", "Kitten")
+prompt = st.text_input("Enter a text prompt", "Kitten")
 
     # Generate images when the user clicks the button
     if st.button("Generate Images"):
