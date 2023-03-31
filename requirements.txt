@@ -3,5 +3,5 @@ tensorflow>=2.0.0
 Flask
 Pillow
 torch
-dalle-pytorch
+Python-DALLE
 
