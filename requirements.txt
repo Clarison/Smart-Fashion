@@ -4,5 +4,5 @@ Flask
 Pillow
 torch
 Python-DALLE
-openai
-os
+
+
