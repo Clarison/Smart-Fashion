@@ -9,7 +9,10 @@ dalle = DALLE("sess-In3IqqzwaEcUnSlLpW0FYW5eIB1vDOYyy3TGttzW")
 
 # Define async function to generate images
 async def generate_images(prompt):
-    images = await dalle.generate(prompt)
+    images = []
+    for i in range(5):
+        image = await dalle.generate(prompt)
+        images.append(image)
     return images
 
 # Define Streamlit app
