@@ -5,7 +5,7 @@ from DALLE import DALLE
 st.write('Hi there!')
 
 # Instantiate DALLE model
-dalle = DALLE("sess-xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+dalle = DALLE("sess-In3IqqzwaEcUnSlLpW0FYW5eIB1vDOYyy3TGttzW")
 
 # Define async function to generate images
 async def generate_images(prompt):
