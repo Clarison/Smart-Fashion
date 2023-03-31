@@ -17,13 +17,13 @@ st.title("DALLE Image Generation App")
 prompt = st.text_input("Enter a text prompt", "Kitten")
 
     # Generate images when the user clicks the button
-    if st.button("Generate Images"):
+if st.button("Generate Images"):
         # Generate the images asynchronously
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        images = loop.run_until_complete(generate_images(prompt))
-        st.write("Generating images...")
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    images = loop.run_until_complete(generate_images(prompt))
+    st.write("Generating images...")
 
         # Display the images
-        for image in images:
-            st.image(image)
+for image in images:
+    st.image(image)
