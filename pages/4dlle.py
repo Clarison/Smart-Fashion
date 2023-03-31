@@ -17,11 +17,10 @@ def app():
     # Generate images when the user clicks the button
     if st.button("Generate Images"):
         # Generate the images asynchronously
-        task = asyncio.create_task(generate_images(prompt))
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        images = loop.run_until_complete(generate_images(prompt))
         st.write("Generating images...")
-
-        # Wait for the images to be generated
-        images = await task
 
         # Display the images
         for image in images:
