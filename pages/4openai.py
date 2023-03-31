@@ -2,7 +2,7 @@ import os
 import openai
 import streamlit as st
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def genimage(ask):
     try:
