@@ -2,6 +2,8 @@ import streamlit as st
 import asyncio
 from DALLE import DALLE
 
+
+st.write('hi')
 dalle = DALLE("sess-xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 async def generate_images(prompt):
