@@ -30,7 +30,7 @@ def app():
 
             # Display the images
             for image in images:
-                st.image(image, use_column_width=True)
+                st.image(image)
 
 # Run the app
 if __name__ == "__main__":
