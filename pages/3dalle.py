@@ -1,6 +1,6 @@
 import streamlit as st
 import asyncio
-from DALLE import DALLE
+from dalle_pytorch import DALLE
 
 st.write('Hi there!')
 
