@@ -29,8 +29,9 @@ def app():
             images = loop.run_until_complete(generate_images(prompt))
 
             # Display the images
-            for image in images:
-                st.image(image)
+            for i, image in enumerate(images[:5]):
+                  st.image(image, caption=f"Image {i+1}")
+
 
 # Run the app
 if __name__ == "__main__":
