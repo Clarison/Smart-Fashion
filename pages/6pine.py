@@ -23,11 +23,14 @@ if file is not None:
     img = img.resize((224, 224))
 
     # Convert to bytes and encode as base64
-    img_bytes = img.tobytes()
-    img_b64 = base64.b64encode(img_bytes).decode()
-    st.write("This is the img_64 ",img_b64)
+    uploaded_img_path = "static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file.name
+    img.save(uploaded_img_path)
+
+        # Run search
+    query = fe.extract(img)
+    st.write("This is the img_64 ",query)
     # Search index using Pinecone
-    results = pinecone_index.query(queries=[img_b64], top_k=5)
+    results = pinecone_index.query(queries=[query], top_k=5)
 
     # Display results
     st.write("Top 5 results:")
