@@ -10,7 +10,7 @@ pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-we
 pinecone_index_name = "new"
 pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
 pinecone_index = pinecone.Index(index_name= pinecone_index_name)
-
+st.write("This is the list of index "+pinecone.list_indexes())
 # Set up Streamlit app
 st.title("Image Search with Pinecone")
 file = st.file_uploader("Upload an image")
@@ -23,7 +23,7 @@ if file is not None:
     # Convert to bytes and encode as base64
     img_bytes = img.tobytes()
     img_b64 = base64.b64encode(img_bytes).decode()
-
+    st.write("This is the img_64 "+imgb64)
     # Search index using Pinecone
     results = pinecone_index.query(queries=[img_b64], top_k=5)
 
