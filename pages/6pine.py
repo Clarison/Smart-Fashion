@@ -29,7 +29,7 @@ if file is not None:
 
         # Run search
     fe = FeatureExtractor()
-    query = fe.extract(img)
+    query = fe.extract(img).tolist()
     st.write("This is the img_64 ",query)
     
   
