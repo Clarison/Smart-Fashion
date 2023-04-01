@@ -39,7 +39,7 @@ if file is not None:
    # Display results
     st.write("Top 5 results:")
     
-    url = result.id.decode("utf-8")
-    score = result.score
+    url = results.id.decode("utf-8")
+    score = results.score
     image = Image.open(requests.get(url, stream=True).raw)
     st.image(image, caption=f"Score: {score}")
