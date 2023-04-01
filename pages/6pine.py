@@ -5,7 +5,7 @@ from PIL import Image
 
 # Connect to Pinecone index
 pinecone_index_name = "my_index_name"
-pinecone.api_key = "my_api_key"
+pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
 pinecone_index = pinecone.Index(index_name= pinecone_index_name)
 
 # Set up Streamlit app
