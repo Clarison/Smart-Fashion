@@ -5,7 +5,7 @@ import numpy as np
 import pinecone
 
 # Set up Pinecone connection
-pinecone.init(api_key="YOUR_API_KEY")
+pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01")
 pinecone.create_index(index_name="image_embeddings", dimension=512)
 
 # Set up Streamlit page
