@@ -14,3 +14,23 @@ def intialize_pinecone():
     index = pinecone.Index(INDEX_NAME)
     
     return index
+
+def load_imgpath():
+    root_dir = r'./static/img'
+    # define dict
+    files_path = {}
+    
+    #loop through the files 
+    for subdir, dirs, files in os.walk(root_dir):
+        for file in files:
+            if file.endswith(".jpg"):
+                #Extract img path
+                img_path = os.path.join(subdir, file)
+                #Extract subdict name and file name
+                subdirectory_name = os.path.basename(subdir)
+                file_name = os.path.splitext(file)[0] # e.g., ./static/img/xxx.jpg
+                
+                #append to dict 
+                files_path['{sub}_{file}'.format(sub = subdirectory_name, file = file_name)] = img_path
+    return files_path
+
