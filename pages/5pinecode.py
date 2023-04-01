@@ -34,3 +34,8 @@ def load_imgpath():
                 files_path['{sub}_{file}'.format(sub = subdirectory_name, file = file_name)] = img_path
     return files_path
 
+index = intialize_pinecone()
+file_path = load_imgpath()
+file2 = st.file_uploader(label='Upload image to search', type=['jpg','png','jpeg'], key='FileInput2')
+num = st.number_input('Enter the number of images to match', min_value= 0, max_value=5, value=1, step=1)
+run = st.button(label='Search', key='button2')
