@@ -34,7 +34,7 @@ if file is not None:
     
   
     # Search index using Pinecone
-    results = index.query(queries=[query], top_k=1)
+    results = index.query(queries=[query], top_k=10)
 
     # Display results
     st.write("Top 5 results:")
