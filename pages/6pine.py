@@ -2,6 +2,7 @@ import streamlit as st
 import pinecone
 import requests
 from PIL import Image
+import base64
 
 # Connect to Pinecone index
 pinecone_index_name = "image-search"
@@ -17,11 +18,12 @@ if file is not None:
     img = Image.open(file)
     img = img.resize((224, 224))
 
-    # Convert to bytes
+    # Convert to bytes and encode as base64
     img_bytes = img.tobytes()
+    img_b64 = base64.b64encode(img_bytes).decode()
 
     # Search index using Pinecone
-    results = pinecone_index.query(queries=[img_bytes], top_k=5)
+    results = pinecone_index.query(queries=[img_b64], top_k=5)
 
     # Display results
     st.write("Top 5 results:")
@@ -30,3 +32,4 @@ if file is not None:
         score = result.score
         image = Image.open(requests.get(url, stream=True).raw)
         st.image(image, caption=f"Score: {score}")
+
