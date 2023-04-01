@@ -6,10 +6,10 @@ from datetime import datetime
 from feature_extractor import FeatureExtractor
 
 
-pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-west4-gcp")
+pinecone.init(api_key="5c1bd226-cec5-4eff-bb45-657933b3b8a9", environment="us-west4-gcp")
 # Connect to Pinecone index
 
-pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
+pinecone.api_key = "5c1bd226-cec5-4eff-bb45-657933b3b8a9"
 index_name="fashion"
 
 index = pinecone.Index(index_name)
