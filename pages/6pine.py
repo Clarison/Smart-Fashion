@@ -7,9 +7,9 @@ import base64
 
 pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-west4-gcp")
 # Connect to Pinecone index
-pinecone.create_index(name="image_embeddings", dimension=512)
+
 pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
-index_name="image_embeddings"
+index_name="fashion"
 
 pinecone_index = pinecone.Index(index_name= pinecone_index_name)
 st.write("This is the list of index ",pinecone.list_indexes())
