@@ -16,6 +16,36 @@ def intialize_pinecone():
     
     return index
 
+def input_query(img,num,index):
+    #Initialize feature extractor 
+    feature = fe.extract(img).tolist()
+    
+    #query index
+    response = index.query(
+    feature, 
+    top_k=num)
+    return response
+
+def output(response, files_path):
+    #Read the response and display image
+    col1, col2, col3 = st.columns(3)
+    i = 0
+    for responses in response['matches']:
+        i = i + 1
+        if i == 1:
+            with col1:
+                image = Image.open(  files_path['{path}'.format(path = responses['id'])]  ) 
+                st.image(image, caption='Score is {d_score}'.format(d_score = responses['score']))
+        elif i == 2:
+            with col2:
+                image = Image.open(  files_path['{path}'.format(path = responses['id'])]  ) 
+                st.image(image, caption='Score is {d_score}'.format(d_score = responses['score']))
+        else:
+            with col3:
+                image = Image.open(  files_path['{path}'.format(path = responses['id'])]  ) 
+                st.image(image, caption='Score is {d_score}'.format(d_score = responses['score']))
+                i = 0   
+
 def load_imgpath():
     root_dir = r'./static/img'
     # define dict
@@ -47,6 +77,9 @@ if file2 and (num != 0) and run:
         img = Image.open(file2)  # PIL image
         uploaded_img_path = r"./static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file2.name
         img.save(uploaded_img_path)
-        
         response = input_query(img,num,index) 
+        
+        output(response, file_path)
+
+        
         
