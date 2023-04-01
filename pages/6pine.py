@@ -36,10 +36,13 @@ if file is not None:
     # Search index using Pinecone
     results = index.query(queries=[query], top_k=1)
 
-   # Display results
+    # Display results
     st.write("Top 5 results:")
-    
-    url = results.id.decode("utf-8")
-    score = results.score
-    image = Image.open(requests.get(url, stream=True).raw)
-    st.image(image, caption=f"Score: {score}")
+    for result in results:
+        if result.id is not None:
+            url = result.id.decode("utf-8")
+            score = result.score
+            image = Image.open(requests.get(url, stream=True).raw)
+            st.image(image, caption=f"Score: {score}")
+        else:    
+            st.write("NO imgs to display")    
