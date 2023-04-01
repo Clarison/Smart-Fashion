@@ -14,7 +14,7 @@ index = pinecone.Index(index_name)
 fe = FeatureExtractor()
 
 # Set the path to the folder containing the images
-image_folder = "/static/img"
+image_folder = "./static/img"
 
 # Loop over the images in the folder
 for file_name in os.listdir(image_folder):
