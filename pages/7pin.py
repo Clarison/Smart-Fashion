@@ -9,7 +9,7 @@ pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-we
 # Connect to Pinecone index
 pinecone_index_name = "fashion"
 pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
-pinecone_index = pinecone.Index(index_name= pinecone_index_name)
+
 
 # Set up Streamlit page
 st.title("Image Search")
@@ -31,7 +31,7 @@ if uploaded_file is not None:
     embedding = np.array(res.json()["predictions"])
 
     # Store the image embedding in Pinecone
-    pinecone.index(index_name="image_embeddings").upsert(ids=[uploaded_file.name], vectors=[embedding])
+    pinecone.index(index_name="fashion").upsert(ids=[uploaded_file.name], vectors=[embedding])
 
     # Search for similar images in Pinecone
     query_results = pinecone.index(index_name="image_embeddings").query(queries=[embedding], top_k=5)
