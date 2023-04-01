@@ -41,3 +41,12 @@ num = st.number_input('Enter the number of images to match', min_value= 0, max_v
 run = st.button(label='Search', key='button2')
 
 index = intialize_pinecone()
+file_path = load_imgpath()
+if file2 and (num != 0) and run:
+        st.image(file2, caption='Uploaded image')
+        img = Image.open(file2)  # PIL image
+        uploaded_img_path = r"./static/uploaded/" + datetime.now().isoformat().replace(":", ".") + "_" + file2.name
+        img.save(uploaded_img_path)
+        
+        response = input_query(img,num,index) 
+        
