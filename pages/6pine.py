@@ -2,7 +2,7 @@ import streamlit as st
 import pinecone
 import requests
 from PIL import Image
-import datetime
+from datetime import datetime
 
 
 pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-west4-gcp")
