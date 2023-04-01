@@ -31,8 +31,10 @@ if file is not None:
     fe = FeatureExtractor()
     query = fe.extract(img)
     st.write("This is the img_64 ",query)
+    
+  
     # Search index using Pinecone
-    results = pinecone_index.query(queries=[query], top_k=5)
+    results = index.query(queries=[query], top_k=5)
 
     # Display results
     st.write("Top 5 results:")
