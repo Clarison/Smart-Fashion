@@ -23,7 +23,7 @@ if file is not None:
     # Convert to bytes and encode as base64
     img_bytes = img.tobytes()
     img_b64 = base64.b64encode(img_bytes).decode()
-    st.write("This is the img_64 ",imgb64)
+    st.write("This is the img_64 ",img_b64)
     # Search index using Pinecone
     results = pinecone_index.query(queries=[img_b64], top_k=5)
 
