@@ -44,5 +44,4 @@ if file is not None:
             score = result.score
             image = Image.open(requests.get(url, stream=True).raw)
             st.image(image, caption=f"Score: {score}")
-        else:    
-            st.write("NO imgs to display")    
+          
