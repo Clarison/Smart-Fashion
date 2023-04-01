@@ -5,7 +5,7 @@ from PIL import Image
 import base64
 
 # Connect to Pinecone index
-pinecone_index_name = "image-search"
+pinecone_index_name = "image-search-36ce2e7.svc.us-west4-gcp.pinecone.io"
 pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
 pinecone_index = pinecone.Index(index_name= pinecone_index_name)
 
