@@ -3,6 +3,7 @@ import pinecone
 import requests
 from PIL import Image
 from datetime import datetime
+from feature_extractor import FeatureExtractor
 
 
 pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-west4-gcp")
@@ -27,6 +28,7 @@ if file is not None:
     img.save(uploaded_img_path)
 
         # Run search
+    fe = FeatureExtractor()
     query = fe.extract(img)
     st.write("This is the img_64 ",query)
     # Search index using Pinecone
