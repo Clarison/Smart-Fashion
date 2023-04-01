@@ -5,8 +5,11 @@ import numpy as np
 import pinecone
 
 # Set up Pinecone connection
-pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01")
-pinecone.create_index(name="image_embeddings", dimension=512)
+pinecone.init(api_key="deb8442d-d32a-4485-a5b7-35f577f68c01", environment="us-west4-gcp")
+# Connect to Pinecone index
+pinecone_index_name = "fashion"
+pinecone.api_key = "deb8442d-d32a-4485-a5b7-35f577f68c01"
+pinecone_index = pinecone.Index(index_name= pinecone_index_name)
 
 # Set up Streamlit page
 st.title("Image Search")
