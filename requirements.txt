@@ -4,5 +4,11 @@ Flask
 Pillow
 torch
 Python-DALLE
-
+numpy
+datetime
+pathlib
+openai
+urllib3
+pinecone-client
+PyAutoGUI
 
