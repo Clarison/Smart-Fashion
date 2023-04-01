@@ -1,4 +1,5 @@
 import pinecone
+import streamlit as st
 
 def intialize_pinecone():
     DATA_DIRECTORY = 'assignment4'
